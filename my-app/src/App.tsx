@@ -25,8 +25,11 @@ const App: React.FC = () => {
 
   return (
     <>
-      <h1>レシピ分量計算アプリ</h1>
+      <h1>分量計算</h1>
+
+      {/* RecipeFormに、handleFormSubmitという関数をonSubmitという名前のpropsとして渡す */}
       <RecipeForm onSubmit={handleFormSubmit} />
+
       {ingredients.length > 0 && (
         <RecipeResult
           ingredients={ingredients}
@@ -34,6 +37,22 @@ const App: React.FC = () => {
           newServings={newServings}
         />
       )}
+
+      <p>
+        【概要】
+        <br />
+        レシピの分量を作りたい人数に合わせて計算するツールです。
+        <br />
+        【使い方】
+        <br />
+        1.材料名と分量を入力する
+        <br />
+        　※分量は半角で整数または小数で入力してください。
+        <br />
+        2.元の分量と新しい分量を入力する
+        <br />
+        3.「計算」をクリックすると結果が表示される
+      </p>
     </>
   );
 };

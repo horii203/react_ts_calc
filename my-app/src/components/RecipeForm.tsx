@@ -1,22 +1,18 @@
 import React, { useState } from "react";
 
-export interface Ingredient {
-  name: string; // 材料名
-  amount: string; // 分量
-}
-// フォームが送信されたらこれらの情報を受け取る
+// propsの型を定義
 interface RecipeFormProps {
   onSubmit: (
-    ingredients: Ingredient[],
+    ingredients: { name: string; amount: string }[],
     originalServings: number,
     newServings: number
   ) => void;
 }
 
 const RecipeForm: React.FC<RecipeFormProps> = ({ onSubmit }) => {
-  const [ingredients, setIngredients] = useState<Ingredient[]>([
-    { name: "", amount: "" },
-  ]);
+  const [ingredients, setIngredients] = useState<
+    { name: string; amount: string }[]
+  >([{ name: "", amount: "" }]);
   const [originalServings, setOriginalServings] = useState<number>(4); // 初期値は4人分
   const [newServings, setNewServings] = useState<number>(1); // 初期値は1人分
 
@@ -34,15 +30,15 @@ const RecipeForm: React.FC<RecipeFormProps> = ({ onSubmit }) => {
     setIngredients(updatedIngredients);
   };
 
-  // 材料追加
+  // 材料の追加処理
   const handleAddIngredient = () => {
     setIngredients([...ingredients, { name: "", amount: "" }]);
   };
 
   // フォームが送信されたときに呼び出される関数
   const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    onSubmit(ingredients, originalServings, newServings);
+    e.preventDefault(); // ページのリロードを防ぐ
+    onSubmit(ingredients, originalServings, newServings); // フォームの入力データを親コンポーネントに渡す
   };
 
   return (

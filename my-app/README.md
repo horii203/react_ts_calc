@@ -1,46 +1,43 @@
-# Getting Started with Create React App
+# レシピ分量計算アプリ
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## 概要
 
-## Available Scripts
+このアプリは、レシピの材料とその分量を、指定した人数に合わせて自動的に計算するツールです。元のレシピの人数を基に、新しい人数に応じた分量を計算し、ユーザーが簡単に分量を把握できるように設計されています。
 
-In the project directory, you can run:
+## 主な機能
 
-### `npm start`
+- **材料の追加**: ユーザーは任意の数の材料を入力できます。
+- **分量の計算**: 元の人数と新しい人数を入力することで、分量を自動的に計算します。
+- **結果の表示**: 計算された分量がリスト形式で表示されます。
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## 使用技術
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+- **React**: ユーザーインターフェースの構築に使用。
+- **TypeScript**: 型安全なコードを書くために使用。
+- **SCSS**: スタイリングのために使用。
 
-### `npm test`
+## 使い方
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+1. アプリをクローンします。
 
-### `npm run build`
+   ```bash
+   git clone https://github.com/horii203/react_ts_calc.git
+   cd my-app
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+   ```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+2. 依存関係をインストールします。
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+   ```bash
+   npm install
 
-### `npm run eject`
+   ```
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+3. アプリを起動します。
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+   ```bash
+   npm start
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+   ```
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+4. http://localhost:3000 を開きます
