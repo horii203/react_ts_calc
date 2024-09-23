@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import styled from "styled-components";
 
 // propsの型を定義
 interface RecipeFormProps {
@@ -8,6 +9,42 @@ interface RecipeFormProps {
     newServings: number
   ) => void;
 }
+
+const Form = styled.form`
+  button {
+    display: block;
+    padding: 10px;
+    min-width: 150px;
+    background-color: #e7e7e7;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin: 10px auto;
+  }
+`;
+const Item = styled.div`
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  margin-top: 10px;
+  input {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    min-width: 50%;
+  }
+`;
+const Wrapper = styled.div`
+  margin: 50px 0;
+  display: grid;
+  gap: 10px;
+  input {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 30px;
+  }
+`;
 
 const RecipeForm: React.FC<RecipeFormProps> = ({ onSubmit }) => {
   const [ingredients, setIngredients] = useState<
@@ -42,9 +79,9 @@ const RecipeForm: React.FC<RecipeFormProps> = ({ onSubmit }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <Form onSubmit={handleSubmit}>
       {ingredients.map((ingredient, index) => (
-        <div key={index}>
+        <Item key={index}>
           <input
             type="text"
             placeholder="材料名"
@@ -61,32 +98,36 @@ const RecipeForm: React.FC<RecipeFormProps> = ({ onSubmit }) => {
               handleIngredientChange(index, "amount", e.target.value)
             }
           />
-        </div>
+        </Item>
       ))}
       <button type="button" onClick={handleAddIngredient}>
-        材料を追加
+        ＋ 材料を追加
       </button>
 
-      <div>
-        <label>元の人数:</label>
-        <input
-          type="number"
-          value={originalServings}
-          onChange={(e) => setOriginalServings(Number(e.target.value))}
-        />
-      </div>
+      <Wrapper>
+        <div>
+          <label>元の分量：</label>
+          <input
+            type="number"
+            value={originalServings}
+            onChange={(e) => setOriginalServings(Number(e.target.value))}
+          />
+          <span>人前</span>
+        </div>
 
-      <div>
-        <label>新しい人数:</label>
-        <input
-          type="number"
-          value={newServings}
-          onChange={(e) => setNewServings(Number(e.target.value))}
-        />
-      </div>
+        <div>
+          <label>新しい分量：</label>
+          <input
+            type="number"
+            value={newServings}
+            onChange={(e) => setNewServings(Number(e.target.value))}
+          />
+          <span>人前</span>
+        </div>
+      </Wrapper>
 
       <button type="submit">計算</button>
-    </form>
+    </Form>
   );
 };
 
