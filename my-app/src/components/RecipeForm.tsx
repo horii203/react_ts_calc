@@ -24,7 +24,7 @@ const Form = styled.form`
 `;
 const Item = styled.div`
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: 1fr 1fr 50px;
   gap: 10px;
   margin-top: 10px;
   input {
@@ -32,6 +32,12 @@ const Item = styled.div`
     border: 1px solid #ccc;
     border-radius: 4px;
     min-width: 50%;
+  }
+  button {
+    min-width: auto;
+    width: 100%;
+    margin: 0;
+    padding: 0;
   }
 `;
 const Wrapper = styled.div`
@@ -72,6 +78,12 @@ const RecipeForm: React.FC<RecipeFormProps> = ({ onSubmit }) => {
     setIngredients([...ingredients, { name: "", amount: "" }]);
   };
 
+  // 材料の削除処理
+  const handleRemoveIngredient = (index: number) => {
+    const updatedIngredients = ingredients.filter((_, i) => i !== index);
+    setIngredients(updatedIngredients);
+  };
+
   // フォームが送信されたときに呼び出される関数
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault(); // ページのリロードを防ぐ
@@ -98,6 +110,9 @@ const RecipeForm: React.FC<RecipeFormProps> = ({ onSubmit }) => {
               handleIngredientChange(index, "amount", e.target.value)
             }
           />
+          <button type="button" onClick={() => handleRemoveIngredient(index)}>
+            削除
+          </button>
         </Item>
       ))}
       <button type="button" onClick={handleAddIngredient}>
