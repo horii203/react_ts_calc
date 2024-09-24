@@ -126,6 +126,7 @@ const RecipeForm: React.FC<RecipeFormProps> = ({ onSubmit }) => {
             type="number"
             value={originalServings}
             onChange={(e) => setOriginalServings(Number(e.target.value))}
+            min="1"
           />
           <span>人前</span>
         </div>
@@ -136,6 +137,7 @@ const RecipeForm: React.FC<RecipeFormProps> = ({ onSubmit }) => {
             type="number"
             value={newServings}
             onChange={(e) => setNewServings(Number(e.target.value))}
+            min="1"
           />
           <span>人前</span>
         </div>
